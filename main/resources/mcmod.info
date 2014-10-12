@@ -1,0 +1,16 @@
+[
+{
+  "modid": "MiscCraft",
+  "name": "§5MiscCraft",
+  "description": "§aA collection of mod ideas",
+  "version": 1.2,
+  "mcversion": 1.2,
+  "url": "",
+  "updateUrl": "",
+  "authors": "Fibonacci",
+  "credits": "§bF§1i§2b§3o§4n§5a§6c§7c§8i§9, §2REACON62, §k17§cPlayer§k17§c, §3NannoFrost, §1Nathanzeus317",
+  "logoFile": "assets/misccraft/textures/logo/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
