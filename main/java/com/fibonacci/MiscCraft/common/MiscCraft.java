@@ -3,13 +3,7 @@ package com.fibonacci.MiscCraft.common;
 
 import com.fibonacci.MiscCraft.block.*;
 import com.fibonacci.MiscCraft.block.gui.container.MiscCraftGUIHandler;
-import com.fibonacci.MiscCraft.block.tileentity.TileEntityBeerStill;
-import com.fibonacci.MiscCraft.block.tileentity.TileEntityBullSummonBlock;
-import com.fibonacci.MiscCraft.block.tileentity.TileEntityPipe;
-import com.fibonacci.MiscCraft.block.tileentity.TileEntitySapphireFurnace2;
-import com.fibonacci.MiscCraft.block.tileentity.TileEntitySolarPanel;
-import com.fibonacci.MiscCraft.block.tileentity.TileEntityWindmill;
-import com.fibonacci.MiscCraft.block.tileentity.TileEntityWire;
+import com.fibonacci.MiscCraft.block.tileentity.*;
 import com.fibonacci.MiscCraft.block.worldgeneration.AntiOreWG;
 import com.fibonacci.MiscCraft.block.worldgeneration.NewBlockTestWG;
 import com.fibonacci.MiscCraft.block.worldgeneration.PlatinumOreWG;
@@ -27,8 +21,8 @@ import com.fibonacci.MiscCraft.creativetab.placeholder.WIPTabIcon;
 import com.fibonacci.MiscCraft.item.*;
 import com.fibonacci.MiscCraft.item.armor.AntiMetalArmor;
 import com.fibonacci.MiscCraft.item.armor.EmeraldArmor;
+import com.fibonacci.MiscCraft.item.armor.PineconeArmor;
 import com.fibonacci.MiscCraft.mob.entity.*;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.Mod;
@@ -55,15 +49,9 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
-import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.gen.layer.GenLayer;
-import net.minecraft.world.gen.layer.GenLayerBiome;
 import net.minecraftforge.common.*;
-import net.minecraftforge.common.BiomeManager.BiomeEntry;
 import net.minecraftforge.common.util.EnumHelper;
-
-import com.fibonacci.MiscCraft.item.armor.PineconeArmor;
 
 @Mod(modid = "MiscCraft", name = "MiscCraft", version = "1.2")
 
@@ -303,7 +291,7 @@ public static Block RandomBlock = new DiamondRadar().setBlockName("RandomBlock")
 public static Block SystemLights = new SystemLights().setBlockName("SystemLights");
 public static Block FireHydrant = new FireHydrant().setBlockName("FireHydrant");
 public static Block CraftingChest = new CraftingChest().setBlockName("CraftingChest");
-
+public static Block MobSpawnBlocker = new MobSpawnBlocker(Material.rock).setBlockName("MobSpawnBlocker");
 
 
 
@@ -441,7 +429,7 @@ public MiscCraft(){
         GameRegistry.registerBlock(DirectionalBlock, "DirectionalBlock");
         GameRegistry.registerBlock(RandomBlock, "RandomBlock");
         GameRegistry.registerBlock(CraftingChest, "CraftingChest");
-    
+        GameRegistry.registerBlock(MobSpawnBlocker, "MobSpawnBlocker");
         
         /*
          * GameRegistry.registerBlock(Fertilizer, "Fertilizer");
@@ -854,7 +842,7 @@ GameRegistry.addShapedRecipe(new ItemStack(MiscCraft.IndoTorch, 4), new Object[]
 		MiscCraftConfig.initProps(event.getModConfigurationDirectory());
 		 BiomeDictionary.registerBiomeType(platinumorebiome, BiomeDictionary.Type.MOUNTAIN);
 	        BiomeManager.addSpawnBiome(platinumorebiome);
-	        BiomeManager.warmBiomes.add(new BiomeEntry(platinumorebiome, 100));
+//	        BiomeManager.add(new BiomeEntry(platinumorebiome, 100));
 	        BiomeDictionary.registerAllBiomesAndGenerateEvents();
         DimensionManager.registerProviderType(-2, WorldProviderPlatinum.class, false);
         DimensionManager.registerDimension(-2, -2);
