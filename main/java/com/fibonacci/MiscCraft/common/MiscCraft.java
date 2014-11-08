@@ -9,6 +9,7 @@ import com.fibonacci.MiscCraft.block.worldgeneration.NewBlockTestWG;
 import com.fibonacci.MiscCraft.block.worldgeneration.PlatinumOreWG;
 import com.fibonacci.MiscCraft.block.worldgeneration.SapphireOreWG;
 import com.fibonacci.MiscCraft.common.config.MiscCraftConfig;
+import com.fibonacci.MiscCraft.common.events.KeyInputHandler;
 import com.fibonacci.MiscCraft.common.events.OnCraftEvent;
 import com.fibonacci.MiscCraft.common.events.OnSmeltEvent;
 import com.fibonacci.MiscCraft.common.events.WindmillHighlightEvent;
@@ -292,8 +293,9 @@ public static Block SystemLights = new SystemLights().setBlockName("SystemLights
 public static Block FireHydrant = new FireHydrant().setBlockName("FireHydrant");
 public static Block CraftingChest = new CraftingChest().setBlockName("CraftingChest");
 public static Block MobSpawnBlocker = new MobSpawnBlocker(Material.rock).setBlockName("MobSpawnBlocker");
-
-
+//public static Fluid Poison = new Poison("Poison");
+//public static Block BlockPoison = new BlockPoison(Poison, Material.water);
+//public static Item PoisonBucket = new PoisonBucket(BlockPoison).setUnlocalizedName("PoisonBucket").setCreativeTab(WIPTab).setContainerItem(Items.bucket);
 
 
 
@@ -430,7 +432,9 @@ public MiscCraft(){
         GameRegistry.registerBlock(RandomBlock, "RandomBlock");
         GameRegistry.registerBlock(CraftingChest, "CraftingChest");
         GameRegistry.registerBlock(MobSpawnBlocker, "MobSpawnBlocker");
-        
+//        FluidRegistry.registerFluid(Poison);
+//        GameRegistry.registerBlock(BlockPoison, "BlockPoison");
+//        GameRegistry.registerItem(PoisonBucket, "PosionBucket");
         /*
          * GameRegistry.registerBlock(Fertilizer, "Fertilizer");
          * TODO Make it Work!!!!
@@ -836,6 +840,7 @@ GameRegistry.addShapedRecipe(new ItemStack(MiscCraft.IndoTorch, 4), new Object[]
 
 
 
+
     }
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
@@ -852,9 +857,11 @@ GameRegistry.addShapedRecipe(new ItemStack(MiscCraft.IndoTorch, 4), new Object[]
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
+
     	MinecraftForge.EVENT_BUS.register(new WindmillHighlightEvent());
-       
-        
+        //BucketHandler.INSTANCE.buckets.put(BlockPoison, PoisonBucket);
+       // MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
+        FMLCommonHandler.instance().bus().register(new KeyInputHandler());
         
 
 

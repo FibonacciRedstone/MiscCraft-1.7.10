@@ -8,14 +8,16 @@ import com.fibonacci.MiscCraft.mob.render.*;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 import org.lwjgl.util.glu.Sphere;
 
 public class ClientProxy extends CommonProxy{
     public static int sphereID;
-
+    public static KeyBinding[] keyBindings;
 	
 	public void RenderInformation() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityEnderMoaner.class, new RenderEnderMoaner(new EnderMoaner(), 0.3f));
@@ -72,4 +74,20 @@ public class ClientProxy extends CommonProxy{
         GL11.glEndList();
 
     }
+    public static void init(){
+        // declare an array of key bindings
+        keyBindings = new KeyBinding[2];
+
+// instantiate the key bindings
+        keyBindings[0] = new KeyBinding("key.structure.desc", Keyboard.KEY_P, "key.magicbeans.category");
+        keyBindings[1] = new KeyBinding("key.hud.desc", Keyboard.KEY_H, "key.magicbeans.category");
+
+// register all the key bindings
+        for (int i = 0; i < keyBindings.length; ++i)
+        {
+            ClientRegistry.registerKeyBinding(keyBindings[i]);
+        }
+    }
+
+
 }
